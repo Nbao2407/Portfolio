@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700,500,400,300&display=swap');
+
+* {
+  font-family: 'Cabinet Grotesk', sans-serif !important;
+}
+
+:root {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: Dark;
+  background-color: #000000;
+  color: #ffffff;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html {
+  scroll-behavior: auto; 
+  overflow-x: hidden;
+}
+
+html::-webkit-scrollbar {
+  display: none; 
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: 'Cabinet Grotesk', sans-serif !important;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
