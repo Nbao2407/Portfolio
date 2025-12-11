@@ -2,6 +2,11 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Flood, WordPullUp } from '../ui';
 
+import project1 from '../../assets/Group 3.png';
+import project2 from '../../assets/Group 2.png';
+import project3 from '../../assets/Portfolio.png';
+import project4 from '../../assets/BTN.png';
+
 const Work = () => {
     const ref = useRef<HTMLElement>(null!);
     const isInView = useInView(ref, { once: false, margin: "-20%" });
@@ -9,36 +14,36 @@ const Work = () => {
     const projects = [
         {
             id: 1,
-            title: "Project One",
-            category: "Web Design / Development",
-            image: "https://images.unsplash.com/photo-1481487484168-9b995ecc168d?q=80&w=2080&auto=format&fit=crop", // Placeholder
+            title: "ShutDB",
+            category: "Application Design / Development",
+            image: project1,
             link: "#"
         },
         {
             id: 2,
-            title: "Project Two",
-            category: "Mobile Application",
-            image: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?q=80&w=2090&auto=format&fit=crop", // Placeholder
+            title: "SnapBite",
+            category: "Ecommerce",
+            image: project2,
             link: "#"
         },
         {
             id: 3,
-            title: "Project Three",
+            title: "Portfolio",
             category: "Web Design / Development",
-            image: "https://images.unsplash.com/photo-1481487484168-9b995ecc168d?q=80&w=2080&auto=format&fit=crop", // Placeholder
+            image: project3,
             link: "#"
         },
         {
             id: 4,
-            title: "Project Four",
-            category: "Mobile Application",
-            image: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?q=80&w=2090&auto=format&fit=crop", // Placeholder
+            title: "BTN's Shop",
+            category: "Ecommerce",
+            image: project4,
             link: "#"
         }
     ];
 
     return (
-        <section ref={ref} className="w-full min-h-screen flex flex-col justify-center items-center relative overflow-visible bg-neutral-100 pt-48 pb-24  px-4 md:px-12">
+        <section id="projects" ref={ref} className="w-full min-h-screen flex flex-col justify-center items-center relative overflow-visible bg-neutral-100 pt-48 pb-24  px-4 md:px-12">
             <Flood color="#f5f5f5" height="200px" sectionRef={ref} />
             {/* Header Section */}
             <div className="w-full max-w-7xl flex flex-col md:flex-row justify-between items-start mb-20 gap-8">

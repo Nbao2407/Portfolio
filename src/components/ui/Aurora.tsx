@@ -116,7 +116,7 @@ interface AuroraProps {
 }
 
 export default function Aurora(props: AuroraProps) {
-    const { colorStops = ['#5227FF', '#7cff67', '#5227FF'], amplitude = 1.0, blend = 0.5 } = props;
+    const { colorStops = ['#5227FF', '#67ff7bff', '#5227FF'], amplitude = 0.1, blend = 0.1 } = props;
     const propsRef = useRef<AuroraProps>(props);
     propsRef.current = props;
 
@@ -203,7 +203,7 @@ export default function Aurora(props: AuroraProps) {
             }
             gl.getExtension('WEBGL_lose_context')?.loseContext();
         };
-    }, [amplitude]);
+    }, [amplitude, blend, colorStops]);
 
     return <div ref={ctnDom} className="w-full h-full" />;
 }

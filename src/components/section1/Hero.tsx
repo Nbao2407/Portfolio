@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import ShinyText from '../ui/ShinyText';
-
+import { ShiningText, Aurora } from '../ui';
 interface HeroProps {
     introFinished: boolean;
 }
@@ -29,7 +28,14 @@ const Hero: React.FC<HeroProps> = ({ introFinished }) => {
     };
 
     return (
-        <section className="w-full h-screen flex flex-col justify-center items-center relative overflow-hidden">
+        <section id="home" className="w-full h-screen flex flex-col justify-center items-center relative overflow-hidden bg-[#050505]">
+
+            <div className="absolute inset-0 z-0">
+                <Aurora
+                    colorStops={["#00d8ff", "#7cff67", "#00d8ff"]}
+                    speed={0.5}
+                />
+            </div>
             {/* Content */}
             <motion.div
                 className="relative z-11 text-center flex flex-col items-center justify-center h-full"
@@ -61,25 +67,10 @@ const Hero: React.FC<HeroProps> = ({ introFinished }) => {
                 </div>
 
             </motion.div>
-
             {/* Scroll Down Text với animation */}
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={introFinished ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{
-                    duration: 0.8,
-                    ease: [0.76, 0, 0.24, 1],
-                    delay: 0.7
-                }}
-                className="absolute z-[100] bottom-[6%] right-[50%] transform translate-x-[50%]"
-            >
-                <ShinyText
-                    text="scroll down"
-                    disabled={false}
-                    speed={3}
-                    className='item letter-spacing-[1em] font-cabinetGrotesk lg:text-2xl text-xl cursor-default'
-                />
-            </motion.div>
+            <div className="item letter-spacing-[1em] font-cabinetGrotesk lg:text-2xl text-xl cursor-default absolute bottom-[6%] right-[50%] transform translate-x-[50%]">
+                <ShiningText text="scroll down" />
+            </div>
         </section >
     );
 };

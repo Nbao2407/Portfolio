@@ -5,29 +5,24 @@ interface FloodProps {
     color?: string;
     height?: string;
     sectionRef?: React.RefObject<HTMLElement>;
+    reverse?: boolean;
 }
 
-const Flood: React.FC<FloodProps> = ({ color = "#ffffff", height = "100px", sectionRef }) => {
-    // Nếu không có sectionRef, fallback dùng div ref nội bộ
+const Flood: React.FC<FloodProps> = ({ color = "#ffffff", height = "100px", sectionRef, reverse = false }) => {
     const internalRef = useRef<HTMLDivElement>(null);
     const targetRef = sectionRef || internalRef;
 
-    // Theo dõi scroll progress của SECTION CHA (hoặc chính nó nếu fallback)
     const { scrollYProgress } = useScroll({
         target: targetRef,
-        // offset: Khi Top section chạm Bottom Viewport (start end) -> Bắt đầu đếm
-        // Đến khi nào? Tùy chỉnh ở dưới.
         offset: ["start end", "end start"]
     });
 
-    // TWEAK CURVE LOGIC:
-    // [0, 0.4]: Giữ PHẲNG (100) khi section mới xuất hiện và đi lên được 40% màn hình.
-    // [0.4, 0.7]: Biến đổi từ phẳng (100) sang cong (0).
-    // Điều này đảm bảo người dùng thấy đường thẳng rõ ràng trước khi nó cong.
-    const curveY = useTransform(scrollYProgress, [0, 0.1, 0.2], [100, 100, 0]);
+    const curveY = useTransform(scrollYProgress, [0, 0.1, 0.5, 0.7], [100, 100, 0, 0]);
 
-    // Path: M0 100 (Đáy trái) -> L1440 100 (Đáy phải) -> Q720 curveY (Đỉnh điều khiển động) -> 0 100
-    const pathD = useMotionTemplate`M0 100 L1440 100 Q820 ${curveY} 0 100 Z`;
+    const pathDNormal = useMotionTemplate`M0 100 L1440 100 Q720 ${curveY} 0 100 Z`;
+    const pathDReverse = useMotionTemplate`M0 100 L1440 100 L1440 ${curveY} Q720 100 0 ${curveY} Z`;
+
+    const pathD = reverse ? pathDReverse : pathDNormal;
 
     return (
         <div

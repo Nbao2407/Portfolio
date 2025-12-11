@@ -28,8 +28,8 @@ const AboutMe = () => {
     };
 
     return (
-        <section ref={ref} className="w-full relative overflow-visible bg-[#111111] px-6 md:px-12 py-25 flex flex-col justify-between">
-            <Flood color="#111111" height="200px" sectionRef={ref} />
+        <section id="about" ref={ref} className="w-full relative overflow-visible bg-[#111111] px-6 md:px-12 py-25 flex flex-col justify-between">
+            <Flood color="#111111" height="120px" sectionRef={ref} />
             {/* Content Container - Use standard margin instead of forced spacing */}
             <div className="w-full h-[calc(70vh-200px)] flex flex-col justify-center items-center ">
                 <div className="max-w-5xl text-center z-10 flex flex-col gap-8">
@@ -98,7 +98,7 @@ const AboutMe = () => {
                 </svg>
                 <span className="uppercase tracking-[0.2em] text-[10px] text-neutral-500">Scroll to Explore</span>
             </div>
-        </section>
+        </section >
     );
 };
 
